@@ -112,3 +112,26 @@
   
   }
 }
+
+@media (max-width: 950px) {
+  #page-room {
+    padding: 0 2%;
+  }
+}
+
+@media (max-width: 780px) {
+  #page-room {
+    header {
+      padding: 24px 0;
+
+      .content {
+        flex-direction: column;
+        justify-content: center;
+
+        > img  {
+          margin-bottom: 26px;
+        }
+      }
+    }
+  }
+}
