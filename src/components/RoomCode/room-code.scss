@@ -3,14 +3,15 @@
   border-radius: 8px;
   overflow: hidden;
 
-  background: #FFF;
-  border: 1px solid #835afd;
+  background: var(--white);
+  border: 1px solid var(--purple);
   cursor: pointer;
 
   display: flex;
 
   div {
-    background: #835afd;
+    height: 100%;
+    background: var(--purple);
     padding: 0 12px;
     display: flex;
     justify-content: center;

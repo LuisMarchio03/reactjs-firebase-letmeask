@@ -4,9 +4,28 @@
   box-sizing: border-box;
 }
 
+:root {
+  --purple: #835afd;
+  
+  --white: #FFFFFF;
+  --white-100: #fefefe;
+  --white-200: #f8f8f8;
+  
+  --gray-100: #e2e2e2;
+  --gray-200: #a8a8b3;
+  --gray-300: #737380;
+  --gray-350: #737383;
+  --gray-600: #29292e;
+
+  --pink: #e559f9;
+  
+  --red: #ea4335;
+
+}
+
 body {
-  background: #f8f8f8;
-  color: #292926;
+  background: var(--white-200);
+  color: var(--gray-600);
 }
 
 body, input, button, textarea {
