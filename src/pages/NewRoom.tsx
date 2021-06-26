@@ -6,7 +6,6 @@ import { useAuth } from '../hooks/useAuth';
 
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
-import googleIconImg from '../assets/images/google-icon.svg';
 
 import '../styles/auth.scss';
 import { Button } from '../components/Button';
@@ -34,7 +33,7 @@ export function NewRoom() {
       authorId: user?.id,
     })
 
-    history.push(`/rooms/${firebaseRoom.key}`);
+    history.push(`/admin/rooms/${firebaseRoom.key}`);
   }
 
   return (
