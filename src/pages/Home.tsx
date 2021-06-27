@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { database } from '../services/firebase';
 
 import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../hooks/useTheme';
 
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
@@ -14,8 +15,11 @@ import '../styles/pages/auth.scss';
 
 export function Home() {
   const history = useHistory();
-  const { signInWithGoogle, user } = useAuth()
-  const [roomCode, setRoomCode] = useState('')
+
+  const { signInWithGoogle, user } = useAuth();
+  const { theme } = useTheme();
+
+  const [roomCode, setRoomCode] = useState('');
 
   async function handleCreateRoom() {
     if(!user) { // caso não esteja logado, devera se logar
@@ -48,7 +52,7 @@ export function Home() {
   }
 
   return (
-    <div id="page-auth">
+    <div id="page-auth" className={theme}>
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas de Q&amp;A  ao-vivo</strong>
