@@ -49,7 +49,7 @@
     max-width: 320px;
     align-items: stretch;
     text-align: center;
-
+    
     > img {
       align-self: center;
     }
@@ -116,7 +116,7 @@
 
     .separator {
       font-size: 14px;
-      color: var(--gray-200);
+      color: var(--color);
       
       margin: 32px 0;
       display: flex;
