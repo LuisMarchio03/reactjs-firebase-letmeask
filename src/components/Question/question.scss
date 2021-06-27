@@ -1,5 +1,5 @@
 .question {
-  background: var(--white-100);
+  background: var(--questionsTextarea);
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   padding: 24px;
@@ -9,7 +9,7 @@
   }
 
   &.highlighted {
-    background: #f4f0ff;
+    background: var(--highlighted);
     border: 1px solid var(--purple);
 
     footer .user-info span {
@@ -18,11 +18,11 @@
   }
 
   &.answered {
-    background: #d8d6dd;
+    background: var(--answered);
   }
 
   p {
-    color: var(--gray-600);
+    color: var(--color);
   }
 
   footer {
@@ -43,7 +43,7 @@
 
       > span {
         margin-left: 8px;
-        color: #737380;
+        color: var(--color);
         font-size: 14px;
       }
     }

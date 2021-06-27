@@ -2,12 +2,16 @@ import { useHistory, useParams } from 'react-router-dom';
 import { database } from '../services/firebase';
 
 import { useRoom } from '../hooks/useRoom';
-import { useAuth } from '../hooks/useAuth';
+// import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../hooks/useTheme';
 
 import logoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg';
 import checkImg from '../assets/images/check.svg';
 import answerImg from '../assets/images/answer.svg';
+
+import Switch from 'react-switch';
+import { shade } from 'polished';
 
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
@@ -21,7 +25,8 @@ type RoomParams = {
 
 export function AdminRoom() {
   const history = useHistory()
-  const { user } = useAuth();
+  // const { user } = useAuth();
+  const { toggleTheme, theme } = useTheme();
   const params = useParams<RoomParams>();
   
   const roomID = params.id;
@@ -68,6 +73,17 @@ export function AdminRoom() {
 
       <main className="content">
         <div className="room-title">
+          <Switch 
+            onChange={toggleTheme}
+            checked={theme === 'dark'}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={20}
+            width={50}
+            handleDiameter={20}
+            offColor={shade(0.15, "#e559f9")}
+            onColor="#835afd"
+          />
           <h1>Sala {title}</h1>
           { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }
         </div>

@@ -15,7 +15,7 @@ function App() {
   const { theme } = useTheme();
   
   return (
-    <div id="theme" className="dark">
+    <div id="theme" className={theme}>
       <BrowserRouter>
         <AuthContextProvider>
           <Switch>

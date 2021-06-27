@@ -8,6 +8,7 @@ type ThemeContextProviderProps = {
 
 type ThemeContexType = {
   theme: Theme;
+  toggleTheme: () => void;
 }
 
 
@@ -16,8 +17,12 @@ export const ThemeContext = createContext({} as ThemeContexType);
 export function ThemeContextProvider(props: ThemeContextProviderProps) {
   const [currentTheme, setCurrentTheme] = useState<Theme>('light');
 
+  function toggleTheme() {
+    setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light');
+  }
+
   return (
-    <ThemeContext.Provider value={{theme: currentTheme}}>
+    <ThemeContext.Provider value={{theme: currentTheme, toggleTheme}}>
       {props.children}
     </ThemeContext.Provider>
   )

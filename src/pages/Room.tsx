@@ -4,8 +4,12 @@ import { database } from '../services/firebase';
 
 import { useRoom } from '../hooks/useRoom';
 import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../hooks/useTheme';
 
 import logoImg from '../assets/images/logo.svg';
+
+import Switch from 'react-switch';
+import { shade } from 'polished';
 
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
@@ -19,6 +23,7 @@ type RoomParams = {
 
 export function Room() {
   const { user } = useAuth();
+  const { toggleTheme, theme } = useTheme();
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('');
   
@@ -75,6 +80,17 @@ export function Room() {
 
       <main className="content">
         <div className="room-title">
+          <Switch 
+            onChange={toggleTheme}
+            checked={theme === 'dark'}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={20}
+            width={50}
+            handleDiameter={20}
+            offColor={shade(0.15, "#e559f9")}
+            onColor="#835afd"
+          />
           <h1>Sala {title}</h1>
           { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }
         </div>
