@@ -39,6 +39,11 @@ export function AdminRoom() {
     })
     
     history.push('/');
+
+    setTimeout(async function deletar(){
+      await database.ref(`rooms/${roomID}`).remove()
+    }, 5000);
+    
   }
 
   async function handleDeleteQuestion(questionId: string) {
