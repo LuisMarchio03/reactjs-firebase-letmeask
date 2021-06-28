@@ -1,4 +1,5 @@
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 import { database } from '../services/firebase';
 
 import { useRoom } from '../hooks/useRoom';
@@ -18,33 +19,20 @@ import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
 
 import '../styles/pages/room.scss'; 
+import { useDelete } from '../hooks/useDelete';
 
 type RoomParams = {
   id: string;
 }
 
 export function AdminRoom() {
-  const history = useHistory()
   // const { user } = useAuth();
-  const { toggleTheme, theme } = useTheme();
   const params = useParams<RoomParams>();
-  
   const roomID = params.id;
   
+  const { toggleTheme, theme } = useTheme();
   const { title, questions } = useRoom(roomID)
-
-  async function handleEndRoom() {
-    await database.ref(`rooms/${roomID}`).update({
-      endedAt: new Date(),
-    })
-    
-    history.push('/');
-
-    setTimeout(async function deletar(){
-      await database.ref(`rooms/${roomID}`).remove()
-    }, 5000);
-    
-  }
+  const { handleEndRoom } = useDelete(roomID)
 
   async function handleDeleteQuestion(questionId: string) {
     if(window.confirm('Tem certeza que deseja excluir essa pergunta?')) {

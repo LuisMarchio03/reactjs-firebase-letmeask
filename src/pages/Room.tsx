@@ -30,7 +30,7 @@ export function Room() {
   const roomID = params.id;
   
   const { title, questions } = useRoom(roomID)
-
+  
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
 
@@ -66,7 +66,6 @@ export function Room() {
         authorId: user?.id,
       })
     }
-   
   }
 
   return (
