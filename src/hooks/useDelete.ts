@@ -14,7 +14,8 @@ export function useDelete(roomID: string) {
 
     setTimeout(async function deletar(){
       await database.ref(`rooms/${roomID}`).remove()
-    }, 5000);
+    }, 8000);
+    
   }
 
   return {handleEndRoom};

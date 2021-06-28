@@ -7,6 +7,7 @@ import { useRoom } from '../hooks/useRoom';
 import { useTheme } from '../hooks/useTheme';
 
 import logoImg from '../assets/images/logo.svg';
+import logoImgDarkMode from '../assets/images/logo-dark-mode.svg';
 import deleteImg from '../assets/images/delete.svg';
 import checkImg from '../assets/images/check.svg';
 import answerImg from '../assets/images/answer.svg';
@@ -56,7 +57,11 @@ export function AdminRoom() {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+          {theme === 'light' ? (
+              <img src={logoImg} alt="Letmeask" />
+            ) : (
+              <img src={logoImgDarkMode} alt="Letmeask" />
+          )}
           <div>
             <RoomCode code={roomID} />
             <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>

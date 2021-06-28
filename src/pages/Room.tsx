@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { database } from '../services/firebase';
 
 import { useRoom } from '../hooks/useRoom';
@@ -7,6 +7,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useTheme } from '../hooks/useTheme';
 
 import logoImg from '../assets/images/logo.svg';
+import logoImgDarkMode from '../assets/images/logo-dark-mode.svg';
 
 import Switch from 'react-switch';
 import { shade } from 'polished';
@@ -16,12 +17,14 @@ import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
 
 import '../styles/pages/room.scss'; 
+import { useEffect } from 'react';
 
 type RoomParams = {
   id: string;
 }
 
 export function Room() {
+  const history = useHistory();
   const { user } = useAuth();
   const { toggleTheme, theme } = useTheme();
   const params = useParams<RoomParams>();
@@ -30,6 +33,16 @@ export function Room() {
   const roomID = params.id;
   
   const { title, questions } = useRoom(roomID)
+
+  useEffect(() => {
+    const roomRef = database.ref(`rooms/${roomID}`);
+
+    roomRef.get().then(room => {
+      if (room.val().endedAt) {
+        history.push('/');
+      }
+    })
+  }, [roomID])
   
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -72,7 +85,11 @@ export function Room() {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+          {theme === 'light' ? (
+            <img src={logoImg} alt="Letmeask" />
+          ) : (
+            <img src={logoImgDarkMode} alt="Letmeask" />
+          )}
           <RoomCode code={roomID} />
         </div>
       </header>

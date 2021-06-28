@@ -3,9 +3,11 @@ import { Link, useHistory }  from 'react-router-dom';
 import { database } from '../services/firebase';
 
 import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../hooks/useTheme';
 
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
+import logoImgDarkMode from '../assets/images/logo-dark-mode.svg';
 
 import { Button } from '../components/Button';
 
@@ -13,6 +15,7 @@ import '../styles/pages/auth.scss';
 
 export function NewRoom() {
   const { user } = useAuth();
+  const { theme } = useTheme();
 
   const [newRoom, setNewRoom] = useState('');
 
@@ -44,7 +47,11 @@ export function NewRoom() {
       </aside>
       <main>
         <div className="main-content">
-          <img src={logoImg} alt="Letmeask" />
+          {theme === 'light' ? (
+            <img src={logoImg} alt="Letmeask" />
+          ) : (
+            <img src={logoImgDarkMode} alt="Letmeask" />
+          )}
           <h2>Criar uma nova sala</h2>
           <form onSubmit={handleCreateRoom}>
             <input 
