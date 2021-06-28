@@ -25,7 +25,7 @@ type RoomParams = {
 
 export function Room() {
   const history = useHistory();
-  const { user } = useAuth();
+  const { user, signInWithGoogle } = useAuth();
   const { toggleTheme, theme } = useTheme();
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('');
@@ -33,16 +33,6 @@ export function Room() {
   const roomID = params.id;
   
   const { title, questions } = useRoom(roomID)
-
-  useEffect(() => {
-    const roomRef = database.ref(`rooms/${roomID}`);
-
-    roomRef.get().then(room => {
-      if (room.val().endedAt) {
-        history.push('/');
-      }
-    })
-  }, [roomID])
   
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -125,7 +115,7 @@ export function Room() {
                 <span>{user.name}</span>
               </div>
             ) : (
-              <span>Para enviar um pergunta, <button>faça seu login.</button></span>
+              <span>Para enviar um pergunta, <button onClick={signInWithGoogle}>faça seu login.</button></span>
             ) }
             <Button type="submit" disabled={!user}>Enviar pergunta</Button>
           </div>
