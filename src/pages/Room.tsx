@@ -17,7 +17,6 @@ import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
 
 import '../styles/pages/room.scss'; 
-import { useEffect } from 'react';
 
 type RoomParams = {
   id: string;
