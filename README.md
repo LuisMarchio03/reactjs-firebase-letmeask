@@ -3,13 +3,14 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=NLW&message=06&color=8257E5&labelColor=000000" alt="NLW Together 06" />
-
-  <img  src="https://img.shields.io/static/v1?label=license&message=MIT&color=8257E5&labelColor=000000" alt="License">   
+  <img src="https://img.shields.io/static/v1?label=NLW&message=06&color=8257E5&labelColor=000000" alt="NLW Together 06" />  
 </p>
 
 <h1 align="center">
-    <img alt="Letmeask" src=".github/cover.svg" />
+    <img alt="Letmeask" src=".github/Login.png" />
+    <img alt="Letmeask" src=".github/Mobile.png" />
+    <img alt="Letmeask" src=".github/Sala.png" />
+    <img alt="Letmeask" src=".github/Sala-admin.png" />
 </h1>
 
 <br>
