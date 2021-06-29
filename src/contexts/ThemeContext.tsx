@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useState } from 'react'
+import usePersistedState from '../utils/usePersistedState';
 
 type Theme = 'light' | 'dark';
 
@@ -15,9 +16,9 @@ type ThemeContexType = {
 export const ThemeContext = createContext({} as ThemeContexType);
 
 export function ThemeContextProvider(props: ThemeContextProviderProps) {
-  const [currentTheme, setCurrentTheme] = useState<Theme>('light');
+  const [currentTheme, setCurrentTheme] = usePersistedState('theme', 'light');
 
-  function toggleTheme() {
+  async function toggleTheme() {
     setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light');
   }
 
